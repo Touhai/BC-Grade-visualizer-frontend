@@ -1,13 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header'
+import MainForm from './components/MainForm';
+import Form from'./components/MainForm'
 
 function App() {
   return (
     <div>
       <Header ></Header>
-
-      <h1> Hello World!</h1>
+      <MainForm></MainForm>
     </div>
   );
 }
