@@ -1,18 +1,27 @@
 //Component for forms
 
-import React, {useState} from 'react';
-import { useFormik } from 'formik';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import React, { useState, useEffect } from 'react';
+import { Formik, useFormik } from 'formik';
+import BarChart from './BarChart'
 
 
 function MainForm() {
 
-    const [data, setData] = useState([
-        { number: 1, grade: 50 },
-        { number: 2, grade: 75 },
-        { number: 3, grade: 90 },
 
-    ])
+    const [chartData, setChartData] = useState({
+
+        labels: ['Course Grade', 'Provincal Exam Grade', 'Overall Grade'],
+        datasets: [
+            {
+                label: "Grades in %",
+                data: [15, 20, 30],
+                backgroundColor: ['red', 'green', 'blue']
+            }
+        ]
+    })
+
+
+    const [districtNames, setDistrictNames] = useState([]);
 
     const formik = useFormik({
         initialValues: {
@@ -21,18 +30,37 @@ function MainForm() {
             number3: 0,
         },
         onSubmit: values => {
-            setData(prevData => alert(prevData) )
-            alert(data[0].grade)
-
+            updateData(values.number1, values.number2, values.number3)
         }
 
     })
 
-  
+    // updates the value from the form.
+    function updateData(n1, n2, n3) {
+        setChartData(
+            {
+                labels: ['Course Grade', 'Provincal Exam Grade', 'Overall Grade'],
+                datasets: [
+                    {
+                        label: "Grades in %",
+                        data: [n1, n2, n3],
+                        backgroundColor: ['red', 'green', 'blue']
+                    }
+                ]
+            }
+        )
+    }
+
+    useEffect(() =>{
+        fetch("http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info").then(res => res.json()).then((result) =>{
+            setDistrictNames(result)
+        })
+    },[])
 
     return (<div>
 
         <h1>this is a main form</h1>
+
         <form onSubmit={formik.handleSubmit}>
             <label htmlFor="number1">number1</label>
             <input
@@ -68,42 +96,12 @@ function MainForm() {
             <button type="submit">Submit</button>
         </form>
 
-        <VictoryChart
-            domainPadding={20}>
-            <VictoryAxis
-                tickFormat={["Number1", "Number2", "Number3"]} />
 
-
-            <VictoryBar
-                data={data}
-                x="number"
-                y="grade"
-            />
-        </VictoryChart>
-
+        <BarChart data={chartData} />
     </div>
 
     )
 }
 
-
-
-// class MainForm extends React.Component{
-
-//     constructor(){
-//         super()
-//     }
-
-//     handleSubmit(){
-//         // Do something
-//     }
-
-
-//    render(){
-//     return(
-//         <h1>this is a form whatever</h1>
-//     )
-//    }
-// }
 
 export default MainForm
