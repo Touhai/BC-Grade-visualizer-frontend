@@ -21,7 +21,6 @@ function MainForm() {
     })
 
 
-    const [districtNames, setDistrictNames] = useState([]);
 
     const formik = useFormik({
         initialValues: {
@@ -51,15 +50,8 @@ function MainForm() {
         )
     }
 
-    useEffect(() =>{
-        fetch("http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info").then(res => res.json()).then((result) =>{
-            setDistrictNames(result)
-        })
-    },[])
-
     return (<div>
 
-        <h1>this is a main form</h1>
 
         <form onSubmit={formik.handleSubmit}>
             <label htmlFor="number1">number1</label>
