@@ -1,14 +1,17 @@
 import './App.css';
 import Header from './components/Header'
-import MainForm from './components/MainForm';
 import DynamicForm from './components/DynamicForm'
+// import Sample from './components/Sample'
+import React from 'react'
 
 function App() {
   return (
     <div>
       <Header ></Header>
       <DynamicForm/>
-      <MainForm></MainForm>
+      {/* <MainForm></MainForm> */}
+      {/* <Sample/> */}
+      
     </div>
   );
 }

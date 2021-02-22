@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Formik } from 'formik'
 import DynamicForm2 from './DynamicForm2'
 import axios from 'axios'
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
 
 
 
@@ -53,20 +55,31 @@ function DynamicForm() {
                 initialValues={{ distrct: '', year: '' }}
             >
                 <div>
-
-                    <select
+                    <InputLabel htmlFor="district-select">District Name</InputLabel>
+                    <Select
                         name="district"
                         onChange={handleDistrictChange}
+                        inputProps={{
+                            name:"district",
+                            id:"district-select"
+                        }}
+                        
 
                     >
                         {districtNames.map(distrct => {
                             return (<option key={distrct} value={distrct}>{distrct}</option>)
                         })}
-                    </select>
+                    </Select>
+                    
 
-                    <select
+                    <InputLabel htmlFor="year-select">Year</InputLabel>
+                    <Select
                         name="year"
                         onChange={handleYearChange}
+                        inputProps={{
+                            name:"year",
+                            id:"year-select"
+                        }}
 
                     >
                         {schoolYear.map(year => {
@@ -74,7 +87,7 @@ function DynamicForm() {
                         })}
 
 
-                    </select>
+                    </Select>
 
                 </div>
 
