@@ -20,11 +20,7 @@
 
 }
 /* When using className on Material UI stuff, add important tag */
-.button-primary{
-  color:red !important;
-  height:150px !important;
-  position:relative !important;
-}
+
 
 .container{
   flex-wrap: wrap;
@@ -62,8 +58,11 @@
 }
 
 .chart-container{
-  width:800px;
-  height:500px;
+  width:auto;
+  height:auto;
+  float: left !important;
+  margin-left: -250px !important;
+
 }
 
 .district-select-field{

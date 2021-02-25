@@ -5,9 +5,20 @@ import {useFormik } from 'formik';
 import BarChart from './BarChart'
 import axios from 'axios'
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+  }));
+  
 
 
 function MainForm(props) {
+    const classes = useStyles();
 
 
     const [chartData, setChartData] = useState({
@@ -97,12 +108,12 @@ function MainForm(props) {
     }
 
     return (
-        <div className="button-container">
+        <div className={classes.root}>
 
 
             <form onSubmit={formik.handleSubmit}>
 
-                <Button variant="contained " color="secondary" type="submit" className="button-primary" >Submit</Button>
+                <Button variant="contained" color="secondary" type="submit" >Submit</Button>
             </form>
 
             <BarChart data={chartData} />

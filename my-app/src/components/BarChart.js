@@ -10,8 +10,8 @@ function BarChart (props){
         <Bar
         
         data={props.data}
-            height={400}
-            width={600}
+            height={600}
+            width={1300}
             options={{
                 maintainAspectRatio:false,
                 responsive:true,
