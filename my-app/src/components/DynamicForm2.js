@@ -4,8 +4,19 @@ import axios from 'axios'
 import MainForm from './MainForm'
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+}));
 
 export default function DynamicForm2(props) {
+    const classes = useStyles();
 
     const [schoolNames, setSchoolNames] = useState([]);
     const [nameInput, setNameInput] = useState('');
@@ -70,61 +81,78 @@ export default function DynamicForm2(props) {
 
                 initialValues={{ schoolName: '', }}
             >
-                <div>
-                    <InputLabel htmlFor="schoolName-select">School Name</InputLabel>
+                <div className="school-subject-population">
 
-                    <Select
-                        name="schoolName"
-                        onChange={handleSchoolNameChange}
-                        inputProps={{
-                            name: "schoolName",
-                            id: "schoolName-select"
-                        }}
+                    <FormControl className={classes.formControl}>
 
+                        <InputLabel htmlFor="schoolName-select">School Name</InputLabel>
 
-                    >
-
-                        {schoolNames.map(schoolName => {
-                            return (<option key={schoolName} value={schoolName}>{schoolName}</option>)
-
-                        })}
-
-                    </Select>
-
-                    <InputLabel htmlFor="subject-select">Subject</InputLabel>
-
-                    <Select
-                        name="subject"
-                        onChange={handleSubjectChange}
-                        inputProps={{
-                            name: "subject",
-                            id: "subject-select"
-                        }}>
-                        {subject.map(subject => {
-                            return (<option key={subject} value={subject}>{subject}</option>)
-
-                        })}
+                        <Select
+                            name="schoolName"
+                            onChange={handleSchoolNameChange}
+                            className="school-select-field"
+                            inputProps={{
+                                name: "schoolName",
+                                id: "schoolName-select"
+                            }}
 
 
-                    </Select>
+                        >
+
+                            {schoolNames.map(schoolName => {
+                                return (<option key={schoolName} value={schoolName}>{schoolName}</option>)
+
+                            })}
+
+                        </Select>
+                    </FormControl>
+                    <FormControl className={classes.formControl}>
+
+                        <InputLabel htmlFor="subject-select">Subject</InputLabel>
+
+                        <Select
+                            name="subject"
+                            onChange={handleSubjectChange}
+                            className="subject-select-field"
+                            inputProps={{
+                                name: "subject",
+                                id: "subject-select"
+                            }}>
+                            {subject.map(subject => {
+                                return (<option key={subject} value={subject}>{subject}</option>)
+
+                            })}
 
 
-                    <InputLabel htmlFor="population-select">Population</InputLabel>
+                        </Select>
+                    </FormControl>
+                    <FormControl className={classes.formControl}>
 
-                    <Select
-                        name="population"
-                        onChange={handlePopChange}
-                        inputProps={{
-                            name: "population",
-                            id: "population-select"
-                        }}>
-                        {population.map(population => {
-                            return (<option key={population} value={population}>{population}</option>)
+                        <InputLabel htmlFor="population-select">Population</InputLabel>
 
-                        })}
+                        <Select
+                            name="population"
+                            onChange={handlePopChange}
+                            className="population-select-field"
+                            inputProps={{
+                                name: "population",
+                                id: "population-select"
+                            }}>
+
+                            {population.map(population => {
+                                return (<option key={population} value={population}>{population}</option>)
+
+                            })}
 
 
-                    </Select>
+                        </Select>
+
+                    </FormControl>
+
+
+
+
+
 
 
                 </div>

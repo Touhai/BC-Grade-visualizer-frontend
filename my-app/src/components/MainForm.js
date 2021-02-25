@@ -1,7 +1,7 @@
 //Component for forms
 
-import React, { useState, useEffect } from 'react';
-import { Formik, useFormik } from 'formik';
+import React, {useState} from 'react';
+import {useFormik } from 'formik';
 import BarChart from './BarChart'
 import axios from 'axios'
 import Button from '@material-ui/core/Button';
@@ -39,10 +39,13 @@ function MainForm(props) {
 
     //Does all the logic of fetching and processing data
     function fetchData() {
-        axios.get("http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/grades" + "/" + encodeURIComponent(props.name) + "/" + encodeURIComponent(props.year) + "/" + encodeURIComponent(props.subject) + "/" + encodeURIComponent(props.population)).then((response) => {
-            console.log(response.data.data)
-            processData(response.data.data)
-        })
+        axios.get("http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/grades" + "/"
+            + encodeURIComponent(props.name) + "/" + encodeURIComponent(props.year)
+            + "/" + encodeURIComponent(props.subject) + "/"
+            + encodeURIComponent(props.population)).then((response) => {
+                console.log(response.data.data)
+                processData(response.data.data)
+            })
     }
     //helper function that process the data in the front end.
     function processData(arr) {
@@ -94,18 +97,17 @@ function MainForm(props) {
     }
 
     return (
-    <div>
+        <div className="button-container">
 
 
-        <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit}>
 
-            <Button variant="contained "color="secondary"type="submit">Submit</Button>
-            {/* <Button color="primary">Submit</Button> */}
-        </form>
+                <Button variant="contained " color="secondary" type="submit" className="button-primary" >Submit</Button>
+            </form>
 
-        <BarChart data = {chartData}/>
+            <BarChart data={chartData} />
 
-    </div>
+        </div>
 
     )
 }

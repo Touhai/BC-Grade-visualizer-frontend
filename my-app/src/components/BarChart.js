@@ -4,9 +4,8 @@ import {Bar} from 'react-chartjs-2'
 
 function BarChart (props){
     return(
-        <div className= 'chart'>
+        <div className= 'chart-container'>
 
-        <h1> Bar Chart Below UwU</h1>
 
         <Bar
         

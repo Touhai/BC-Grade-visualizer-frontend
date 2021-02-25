@@ -4,8 +4,16 @@ import DynamicForm2 from './DynamicForm2'
 import axios from 'axios'
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import { makeStyles } from '@material-ui/core/styles';
 
 
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+}));
 
 const distNamesLink = "http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info"
 const schoolYearLink = "http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info/year"
@@ -16,6 +24,7 @@ const requestTwo = axios.get(schoolYearLink)
 
 
 function DynamicForm() {
+    const classes = useStyles();
 
 
     const [districtNames, setDistrictNames] = useState([]);
@@ -49,52 +58,58 @@ function DynamicForm() {
 
     return (
 
-        <div>
+        <div className="container">
 
             <Formik
                 initialValues={{ distrct: '', year: '' }}
             >
-                <div>
-                    <InputLabel htmlFor="district-select">District Name</InputLabel>
-                    <Select
-                        name="district"
-                        onChange={handleDistrictChange}
-                        inputProps={{
-                            name:"district",
-                            id:"district-select"
-                        }}
-                        
+                <div className="dist-name-field-container">
+                    <FormControl className={classes.formControl}>
+                        <InputLabel className="input-label" htmlFor="district-select">District Name</InputLabel>
+                        <Select
+                            name="district"
+                            className="district-select-field"
+                            onChange={handleDistrictChange}
+                            inputProps={{
+                                name: "district",
+                                id: "district-select"
+                            }}
+                        >
+                            {districtNames.map(distrct => {
+                                return (<option key={distrct} value={distrct}>{distrct}</option>)
+                            })}
+                        </Select>
 
-                    >
-                        {districtNames.map(distrct => {
-                            return (<option key={distrct} value={distrct}>{distrct}</option>)
-                        })}
-                    </Select>
-                    
+                    </FormControl>
 
-                    <InputLabel htmlFor="year-select">Year</InputLabel>
-                    <Select
-                        name="year"
-                        onChange={handleYearChange}
-                        inputProps={{
-                            name:"year",
-                            id:"year-select"
-                        }}
+                    <FormControl className={classes.formControl}>
+                        <InputLabel className="input-label" htmlFor="year-select">Year</InputLabel>
+                        <Select
+                            name="year"
+                            className="year-select-field"
+                            onChange={handleYearChange}
+                            inputProps={{
+                                name: "year",
+                                id: "year-select"
+                            }}
 
-                    >
-                        {schoolYear.map(year => {
-                            return (<option key={year} value={year}>{year}</option>)
-                        })}
+                        >
+                            {schoolYear.map(year => {
+                                return (<option key={year} value={year}>{year}</option>)
+                            })}
 
 
-                    </Select>
+                        </Select>
+                    </FormControl>
+
+
+
 
                 </div>
 
 
             </Formik>
-            {/* testing */}
-            <DynamicForm2 district ={districtNameInput} year = {yearInput} />
+            <DynamicForm2 district={districtNameInput} year={yearInput} />
 
 
         </div>

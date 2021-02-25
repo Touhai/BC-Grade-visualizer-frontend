@@ -19,3 +19,74 @@
   text-decoration: none;
 
 }
+/* When using className on Material UI stuff, add important tag */
+.button-primary{
+  color:red !important;
+  height:150px !important;
+  position:relative !important;
+}
+
+.container{
+  flex-wrap: wrap;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dist-name-field-container{
+  flex-grow: 1;
+  margin-top: 50px;
+  display: inline-block;
+  width:auto;
+  vertical-align: middle;
+}
+
+.school-subject-population{
+  flex: 1 0 33%;
+  flex-grow: 1;
+  width:800px;
+  margin-top: 25px;
+
+}
+
+.input-label{
+  text-align: left;
+  font-weight: normal;
+  width:100px;
+}
+
+.button-container{
+  display: inline-block;
+  flex-grow: 1;
+
+}
+
+.chart-container{
+  width:800px;
+  height:500px;
+}
+
+.district-select-field{
+  display: inline-block;
+  width:250px;
+  vertical-align: middle;
+}
+
+.year-select-field{
+  display: inline-block;
+  width:110px;
+  vertical-align: middle;
+
+}
+
+.school-select-field{
+  width:350px;
+}
+
+.subject-select-field{
+  width: 150px;
+}
+
+.population-select-field{
+  width:150px;
+}
