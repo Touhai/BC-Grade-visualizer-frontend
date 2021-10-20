@@ -35,7 +35,7 @@ export default function DynamicForm2(props) {
         prevDistrictRef.current = props.district
 
         if (props.district !== prevDistrict) {
-            axios.get("http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info/" + encodeURIComponent(props.district)).then((response) => {
+            axios.get("http://ec2-54-188-112-78.us-west-2.compute.amazonaws.com:3000/api/info/" + encodeURIComponent(props.district)).then((response) => {
                 setSchoolNames(response.data.data)
             })
         }
@@ -49,7 +49,7 @@ export default function DynamicForm2(props) {
     //once year and school Name is selected, allows user to add subjects.
     function handleSchoolNameChange(e) {
         setNameInput(e.target.value)
-        axios.get("http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info/" + encodeURIComponent(e.target.value) + "/"
+        axios.get("http://ec2-54-188-112-78.us-west-2.compute.amazonaws.com:3000/api/info/" + encodeURIComponent(e.target.value) + "/"
             + encodeURIComponent(props.year)).then((response) => {
                 console.log(response.data.data)
                 setSubjects(response.data.data)
@@ -59,7 +59,7 @@ export default function DynamicForm2(props) {
     function handleSubjectChange(e) {
         setSubjectInput(e.target.value);
 
-        axios.get("http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info/" + encodeURIComponent(nameInput) + "/"
+        axios.get("http://ec2-54-188-112-78.us-west-2.compute.amazonaws.com:3000/api/info/" + encodeURIComponent(nameInput) + "/"
             + encodeURIComponent(props.year) + "/" + encodeURIComponent(e.target.value)).then((response) => {
                 console.log(response)
                 setPopulation(response.data.data)

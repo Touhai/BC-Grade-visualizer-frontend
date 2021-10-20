@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const distNamesLink = "http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info"
-const schoolYearLink = "http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/info/year"
+const distNamesLink = "http://ec2-54-188-112-78.us-west-2.compute.amazonaws.com:3000/api/info"
+const schoolYearLink = "http://ec2-54-188-112-78.us-west-2.compute.amazonaws.com:3000/api/info/year"
 const requestOne = axios.get(distNamesLink)
 const requestTwo = axios.get(schoolYearLink)
 

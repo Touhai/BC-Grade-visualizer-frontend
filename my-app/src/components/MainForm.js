@@ -50,7 +50,7 @@ function MainForm(props) {
 
     //Does all the logic of fetching and processing data
     function fetchData() {
-        axios.get("http://ec2-54-165-217-77.compute-1.amazonaws.com:3000/api/grades" + "/"
+        axios.get("http://ec2-54-188-112-78.us-west-2.compute.amazonaws.com:3000/api/grades" + "/"
             + encodeURIComponent(props.name) + "/" + encodeURIComponent(props.year)
             + "/" + encodeURIComponent(props.subject) + "/"
             + encodeURIComponent(props.population)).then((response) => {
