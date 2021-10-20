@@ -3,6 +3,8 @@
 
 This is the front end of the data visulzation project, for the backend checkout https://github.com/Touhai/BC-provinical-grade-visualizer
 
+http://ec2-54-188-112-78.us-west-2.compute.amazonaws.com:3006/
+
 ## Technologies Used
 
 * React 
